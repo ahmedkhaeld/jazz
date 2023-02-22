@@ -20,10 +20,20 @@
 ```
 go installed
 docker installed
+make installed
 ```
+#### **Usage**
+* install jazz package into your pc <br>
+`go get github.com/ahmedkhaeld/jazz` <br>
+* change dir to jazz  <br>
+`cd jazz` <br>
+* build the cli into dist directory <br>
+`make build`  <br>
+* change to dist and copy the executable into your desired directory <br>
+`cp jazz ~/Desktop` <br>
+* cd into Desktop and start new app <br>
+`./jazz new coolapp` <br>
 
-#### **Start a new project**
-``jazz new newProject``
 * This will create a new project with the following structure
 ```
 newProject
