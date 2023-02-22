@@ -1,4 +1,4 @@
-module github.com/ahmedkhaled/jazz
+module github.com/ahmedkhaeld/jazz
 
 go 1.19
 
@@ -18,6 +18,7 @@ require (
 	github.com/go-chi/chi/v5 v5.0.8
 	github.com/go-git/go-git/v5 v5.5.2
 	github.com/go-sql-driver/mysql v1.6.0
+	github.com/gocarina/gocsv v0.0.0-20230219202803-bcce7dc8d0bb
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/gomodule/redigo v1.8.9
 	github.com/iancoleman/strcase v0.2.0
@@ -57,7 +58,6 @@ require (
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.4.0 // indirect
 	github.com/go-test/deep v1.1.0 // indirect
-	github.com/gocarina/gocsv v0.0.0-20230219202803-bcce7dc8d0bb // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect

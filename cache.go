@@ -1,7 +1,7 @@
 package jazz
 
 import (
-	"github.com/ahmedkhaled/jazz/cache"
+	"github.com/ahmedkhaeld/jazz/cache"
 	"github.com/dgraph-io/badger/v3"
 	"github.com/gomodule/redigo/redis"
 	"time"

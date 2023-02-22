@@ -2,7 +2,7 @@ package main
 
 import (
 	"errors"
-	"github.com/ahmedkhaled/jazz"
+	"github.com/ahmedkhaeld/jazz"
 	"github.com/fatih/color"
 	"github.com/joho/godotenv"
 	"os"

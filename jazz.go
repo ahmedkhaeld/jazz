@@ -1,10 +1,10 @@
 package jazz
 
 import (
-	"github.com/ahmedkhaled/jazz/cache"
-	"github.com/ahmedkhaled/jazz/mailer"
-	"github.com/ahmedkhaled/jazz/render"
-	"github.com/ahmedkhaled/jazz/session"
+	"github.com/ahmedkhaeld/jazz/cache"
+	"github.com/ahmedkhaeld/jazz/mailer"
+	"github.com/ahmedkhaeld/jazz/render"
+	"github.com/ahmedkhaeld/jazz/session"
 	"github.com/alexedwards/scs/v2"
 	"github.com/dgraph-io/badger/v3"
 	"github.com/go-chi/chi/v5"
