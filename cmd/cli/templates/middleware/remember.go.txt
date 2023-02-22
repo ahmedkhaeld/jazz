@@ -1,0 +1,85 @@
+package middleware
+
+import (
+	"fmt"
+	"myapp/data"
+	"net/http"
+	"strconv"
+	"strings"
+	"time"
+)
+
+func (m *Middleware) CheckRemember(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		//1. when user is stored in the session,  no need for remember me
+		if m.Session.Exists(r.Context(), "userID") {
+			// user is logged in
+			next.ServeHTTP(w, r)
+		}
+		//2. when user is not stored in the session,  use remember me
+		if !m.Session.Exists(r.Context(), "userID") {
+			// user is not logged in
+			cookie, err := r.Cookie(fmt.Sprintf("_%s_remember", m.AppName))
+			if err == nil {
+				// we found a cookie, so check it
+				key := cookie.Value
+				var user data.User
+				if len(key) > 0 {
+					// cookie has some data, so validate it
+					split := strings.Split(key, "|")
+					uid, hash := split[0], split[1]
+					id, _ := strconv.Atoi(uid)
+					validHash := user.CheckForRememberToken(id, hash)
+					if validHash {
+						// valid hash, so log the user in
+						fetchedUser, _ := user.Get(id)
+						m.Session.Put(r.Context(), "userID", fetchedUser.ID)
+						m.Session.Put(r.Context(), "remember_token", hash)
+						next.ServeHTTP(w, r)
+					}
+					if !validHash {
+						m.deleteRememberCookie(w, r)
+						m.Session.Put(r.Context(), "error", "You've been logged out from another device")
+						next.ServeHTTP(w, r)
+					}
+
+				}
+				if len(key) == 0 {
+					// key length is zero, so it's probably a leftover cookie (user has not closed browser)
+					m.deleteRememberCookie(w, r)
+					next.ServeHTTP(w, r)
+				}
+
+			}
+			if err != nil {
+				// no cookie, so on to the next middleware
+				next.ServeHTTP(w, r)
+			}
+
+		}
+
+	})
+}
+
+// deleteRememberCookie by set a new cookie with the same name and give it an expiry in the past
+func (m *Middleware) deleteRememberCookie(w http.ResponseWriter, r *http.Request) {
+	_ = m.Session.RenewToken(r.Context())
+	// delete the cookie
+	newCookie := http.Cookie{
+		Name:     fmt.Sprintf("_%s_remember", m.AppName),
+		Value:    "",
+		Path:     "/",
+		Expires:  time.Now().Add(-100 * time.Hour),
+		HttpOnly: true,
+		Domain:   m.Session.Cookie.Domain,
+		MaxAge:   -1,
+		Secure:   m.Session.Cookie.Secure,
+		SameSite: http.SameSiteStrictMode,
+	}
+	http.SetCookie(w, &newCookie)
+
+	// log the user out
+	m.Session.Remove(r.Context(), "userID")
+	m.Session.Destroy(r.Context())
+	_ = m.Session.RenewToken(r.Context())
+}
