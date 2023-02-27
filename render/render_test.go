@@ -13,7 +13,7 @@ var pageData = []struct {
 	errorExpected bool
 	errorMessage  string
 }{
-	{"go_page", "go", "home", false, "error rendering go template"},
+	{"go_page", "go", "home.page.tmpl", false, "error rendering go template"},
 	{"go_page_no_template", "go", "no-file", true, "no error rendering non-existent go template, when one is expected"},
 	{"jet_page", "jet", "home", false, "error rendering jet template"},
 	{"jet_page_no_template", "jet", "no-file", true, "no error rendering non-existent jet template, when one is expected"},
@@ -31,6 +31,12 @@ func TestRender_Page(t *testing.T) {
 
 		testRenderer.Renderer = e.renderer
 		testRenderer.RootPath = "./testdata"
+		if e.renderer == "go" {
+			tc, _ := testRenderer.CreateTemplateCache()
+			testRenderer.TemplateCache = tc
+		}
+
+		testRenderer.UseCache = true
 
 		vars := make(jet.VarMap)
 
