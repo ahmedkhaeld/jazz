@@ -1,25 +1,30 @@
 package render
 
 import (
+	"bytes"
+	"errors"
 	"fmt"
 	"github.com/CloudyKit/jet/v6"
 	"github.com/alexedwards/scs/v2"
 	"github.com/justinas/nosurf"
 	"html/template"
 	"net/http"
+	"path/filepath"
 	"strings"
 )
 
 // Render holds the data types needed to render a template
 type Render struct {
-	Renderer   string              //what rendering engine to use
-	RootPath   string              //root path of the template files
-	Secure     bool                //is the app running on https
-	Debug      bool                //is the app running in debug mode
-	Port       string              //port number
-	ServerName string              //server name
-	JetViews   *jet.Set            //jet views
-	Session    *scs.SessionManager //session manager
+	Renderer      string //what rendering engine to use
+	RootPath      string //root path of the template files
+	Secure        bool   //is the app running on https
+	Debug         bool   //is the app running in debug mode
+	UseCache      bool
+	TemplateCache map[string]*template.Template
+	Port          string              //port number
+	ServerName    string              //server name
+	JetViews      *jet.Set            //jet views
+	Session       *scs.SessionManager //session manager
 }
 
 // TemplateData holds the types of data passed from handlers to web template pages
@@ -74,7 +79,7 @@ func (rn *Render) defaultData(td *TemplateData, r *http.Request) *TemplateData {
 func (rn *Render) Page(w http.ResponseWriter, r *http.Request, tmplName string, variables, data interface{}) error {
 	switch strings.ToLower(rn.Renderer) {
 	case "go":
-		return rn.GoPage(w, r, tmplName, data)
+		return rn.GoTemplate(w, r, tmplName, data)
 	case "jet":
 		return rn.JetPage(w, r, tmplName, variables, data)
 
@@ -161,4 +166,85 @@ func (rn *Render) GoPage(w http.ResponseWriter, r *http.Request, tmplName string
 		return fmt.Errorf("%w: %s", ErrExecPage, err)
 	}
 	return nil
+}
+
+func (rn *Render) GoTemplate(w http.ResponseWriter, r *http.Request, tmplName string, data interface{}) error {
+	var templateCache map[string]*template.Template
+	//avoid loading the cache every time we display a single page when calling GoPage func that is responsible
+	//to render the view of a request for production mode
+	if rn.UseCache {
+		templateCache = rn.TemplateCache
+	} else {
+		templateCache, _ = rn.CreateTemplateCache()
+
+	}
+
+	theTemplate, ok := templateCache[tmplName]
+	if !ok {
+		return errors.New("template is not in the views folder ")
+	}
+
+	buf := new(bytes.Buffer)
+
+	//td an instance to hold the passed data from the handler
+	td := &TemplateData{}
+
+	//check if data is not nil and cast data to TemplateData and assign to td
+	if data != nil {
+		td = data.(*TemplateData)
+
+	}
+	td = rn.defaultData(td, r)
+
+	_ = theTemplate.Execute(buf, &td)
+
+	_, err := buf.WriteTo(w)
+	if err != nil {
+		fmt.Println("Error writing to the browser", err)
+		return err
+	}
+
+	return nil
+}
+
+// CreateTemplateCache load the templates that inside the views folder when the application starts;
+// it creates a map of the pages names inside the views folder as its index to quickly be retrieved and uniquely stored
+// and when it is going to look the page name up, it gives a fully parsed and ready to use Template
+func (rn *Render) CreateTemplateCache() (map[string]*template.Template, error) {
+
+	//cache will hold all the existing template at the start of the application
+	cache := map[string]*template.Template{}
+
+	//get all the templates' full path inside the views folder that start with any name and end with "page.tmpl"
+	pages, err := filepath.Glob(fmt.Sprintf("%s/views/*.page.tmpl", rn.RootPath))
+	if err != nil {
+		return cache, err
+	}
+
+	//loop through all pages full path then extract the base name which is the actual template name
+	for _, page := range pages {
+		tmplName := filepath.Base(page)
+
+		//create a new template of the provided template name with its path supported with the available custom functions
+		t, err := template.New(tmplName).Funcs(functions).ParseFiles(page)
+		if err != nil {
+			return cache, err
+		}
+		//look inside the views if there is any layouts
+		matches, err := filepath.Glob(fmt.Sprintf("%s/views/*.layout.tmpl", rn.RootPath))
+		if err != nil {
+			return cache, err
+		}
+
+		//if there are matches, then parse them
+		if len(matches) > 0 {
+			t, err = t.ParseGlob(fmt.Sprintf("%s/views/*.layout.tmpl", rn.RootPath))
+			if err != nil {
+				return cache, err
+			}
+		}
+		// append the created template to the cache
+		cache[tmplName] = t
+	}
+	return cache, nil
 }

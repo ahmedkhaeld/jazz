@@ -58,13 +58,37 @@ func TestRender_GoPage(t *testing.T) {
 	testRenderer.Renderer = "go"
 	testRenderer.RootPath = "./testdata"
 
-	vars := make(jet.VarMap)
-
-	err = testRenderer.Page(w, r, "home", vars, &TemplateData{})
+	err = testRenderer.GoPage(w, r, "home", &TemplateData{})
 	if err != nil {
 		t.Error("Error rendering page", err)
 	}
 
+}
+
+func TestRender_GoTemplate(t *testing.T) {
+	r, err := getSessionData()
+	if err != nil {
+		t.Error(err)
+	}
+
+	w := httptest.NewRecorder()
+
+	testRenderer.Renderer = "go"
+	testRenderer.RootPath = "./testdata"
+	tc, _ := testRenderer.CreateTemplateCache()
+	testRenderer.TemplateCache = tc
+	testRenderer.UseCache = true
+
+	err = testRenderer.GoTemplate(w, r, "home.page.tmpl", &TemplateData{})
+	if err != nil {
+		t.Error("Error rendering page", err)
+	}
+
+	err = testRenderer.GoTemplate(w, r, "not-exist.page.tmpl", &TemplateData{})
+	if err == nil {
+
+		t.Error("page should not be exists", err)
+	}
 }
 
 func TestRender_JetPage(t *testing.T) {

@@ -141,12 +141,30 @@ func (j *Jazz) server() Server {
 	}
 }
 func (j *Jazz) render() *render.Render {
+	var useCache bool
+	if os.Getenv("USE_CACHE") == "true" {
+		useCache = true
+	}
 	rn := render.Render{
 		Renderer: j.settings.renderer,
 		RootPath: j.RootPath,
 		Debug:    j.Debug,
 		Port:     j.settings.port,
 		Session:  j.Session,
+		UseCache: useCache,
+	}
+	//load the views template into a cache
+	if rn.Renderer == "go" && useCache {
+		templateCache, err := rn.CreateTemplateCache()
+		if err != nil {
+			return nil
+		}
+		rn.TemplateCache = templateCache
+		// if in debug mode it is better to load the cache with every request to see the modification in the view
+		if rn.Debug {
+			rn.UseCache = false
+		}
+
 	}
 	return &rn
 
