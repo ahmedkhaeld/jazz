@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/CloudyKit/jet/v6"
+	"github.com/ahmedkhaeld/jazz/forms"
 	"github.com/alexedwards/scs/v2"
 	"github.com/justinas/nosurf"
 	"html/template"
@@ -45,6 +46,7 @@ type TemplateData struct {
 	Error       string                 //error message
 	Warning     string                 //warning message
 	Flash       string                 //flash message
+	Form        *forms.Form
 }
 
 // defaultData add default data to every request

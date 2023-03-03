@@ -17,7 +17,7 @@ import (
 	"strings"
 )
 
-const version = "1.0.0.0"
+const version = "1.0.0.1"
 const randomString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPGRSTUVWXYZ0987654321_+"
 
 // Jazz is the overall type for the jazz package.

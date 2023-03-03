@@ -4,50 +4,15 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2cf50e41-49cc-44b7-affc-f41a09fe46ef" name="Changes" comment="push">
-      <change beforePath="$PROJECT_DIR$/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/badger.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/badger.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/badger_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/badger_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/cache.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/cache.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/cache_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/cache_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/redis.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/redis.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/redis_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/redis_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/setup_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cache/setup_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/create.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/error.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/error.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/migrate.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/migrate.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/new.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/new.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/run.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cli/template.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/template.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/config.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/encryption.go" beforeDir="false" afterPath="$PROJECT_DIR$/encryption.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/errors.go" afterDir="false" />
+    <list default="true" id="2cf50e41-49cc-44b7-affc-f41a09fe46ef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/forms/errors.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forms/forms.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forms/forms_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/cli/templates/go.mod.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cli/templates/go.mod.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jazz.go" beforeDir="false" afterPath="$PROJECT_DIR$/jazz.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs.go" beforeDir="false" afterPath="$PROJECT_DIR$/logs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailer/mail.go" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/mail.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailer/mail_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/mail_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mailer/setupt_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/mailer/setupt_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations.go" beforeDir="false" afterPath="$PROJECT_DIR$/migrations.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/path.go" beforeDir="false" afterPath="$PROJECT_DIR$/path.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ptf/file.psd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/render/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/render/docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render/errors.go" beforeDir="false" afterPath="$PROJECT_DIR$/render/errors.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/render/render.go" beforeDir="false" afterPath="$PROJECT_DIR$/render/render.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render/render_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/render/render_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render/setup_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/render/setup_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/response.go" beforeDir="false" afterPath="$PROJECT_DIR$/response.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.go" beforeDir="false" afterPath="$PROJECT_DIR$/routes.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serve.go" beforeDir="false" afterPath="$PROJECT_DIR$/serve.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session/session.go" beforeDir="false" afterPath="$PROJECT_DIR$/session/session.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session/session_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/session/session_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session/setupt_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/session/setupt_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/urlsigner/signer.go" beforeDir="false" afterPath="$PROJECT_DIR$/urlsigner/signer.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/validator.go" beforeDir="false" afterPath="$PROJECT_DIR$/validator.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wrappers.go" beforeDir="false" afterPath="$PROJECT_DIR$/wrappers.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +29,13 @@
   </component>
   <component name="GOROOT" url="file:///usr/local/go" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="c1444a068ae472c2f9cd1dae230e592d4188ed12" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -75,7 +46,7 @@
     </file-type-list>
   </component>
   <component name="GoLibraries">
-    <option name="indexEntireGoPath" value="false" />
+    <option name="indexEntireGoPath" value="true" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -92,6 +63,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
     &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
@@ -102,6 +74,8 @@
     &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.go.vendoring.notification.had.been.shown&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;configurable..is.expanded&quot;: &quot;true&quot;,
+    &quot;configurable.GoLibrariesConfigurable.is.expanded&quot;: &quot;true&quot;,
     &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/ahmed/jazz&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -178,6 +152,8 @@
         <item itemvalue="Go Test.TestRender_Page in github.com/ahmedkhaled/jazz/render" />
         <item itemvalue="Go Test.go test github.com/ahmedkhaled/jazz/render" />
         <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Test.TestRender_Page in github.com/ahmedkhaled/jazz/render" />
+        <item itemvalue="Go Test.go test github.com/ahmedkhaled/jazz/render" />
       </list>
     </recent_temporary>
   </component>
@@ -190,7 +166,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -198,7 +186,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="push" />
-    <option name="LAST_COMMIT_MESSAGE" value="push" />
+    <MESSAGE value="go.mod template" />
+    <MESSAGE value="fix username" />
+    <MESSAGE value="fix typos" />
+    <MESSAGE value="update optimize go engine of render pkg" />
+    <MESSAGE value="update test for render pkg" />
+    <MESSAGE value="remove tag from jazz" />
+    <MESSAGE value="add tag from jazz" />
+    <MESSAGE value="update tag jazz" />
+    <option name="LAST_COMMIT_MESSAGE" value="update tag jazz" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
